@@ -20,8 +20,9 @@ public class NovaEmpresaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
    
-
-	protected void service(HttpServletRequest request, HttpServletResponse response) 
+	// doPost serve para deixarmos esse método apenas fazendo o post para envio de dados
+	// da para usar também o doGet para pegar as informações.
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws IOException {
 		
 		System.out.println("Cadastrando nova Empresa");
