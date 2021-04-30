@@ -1,10 +1,9 @@
 package br.com.andre.gerenciador.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,15 +16,20 @@ public class ListaEmpresasServlet extends HttpServlet {
 	
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-			throws IOException, ServletException {
-	
+			throws IOException {
 	Banco banco = new Banco();
 	List<Empresa> lista = banco.getEmpresas();
+	PrintWriter out = response.getWriter();
 	
-	request.setAttribute("empresas", lista );
-	//Estamos chamando o JSP
-			RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas.jsp");
-			rd.forward(request, response);
-			
+	out.println("<html><body>");
+	out.println("<ul>");
+	
+	for (Empresa empresa : lista) {
+		out.println("<li>" + "Empresa: " + empresa.getNome() + " - CNPJ: " + empresa.getCnpj() + "</li>");
 	}
+	
+	out.println("</ul>");
+	out.println("</html></body>");
+	}
+
 }
