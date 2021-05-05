@@ -24,6 +24,7 @@ public class HelloWordServlet extends HttpServlet {
 		out.println("</body>");
 		out.println("</html>");
 		
+		
 		//Mensagem que será exibida em nosso console, para sabermos se a informação está sendo executada.
 		System.out.println("Mensagem Servlet iniciada");
 	}
