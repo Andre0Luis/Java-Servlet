@@ -6,7 +6,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -27,7 +28,7 @@ public class NovaEmpresaServlet extends HttpServlet {
 	// doPost serve para deixarmos esse método apenas fazendo o post para envio de dados
 	// da para usar também o doGet para pegar as informações.
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
-			throws IOException {
+			throws IOException, ServletException {
 		
 		System.out.println("Cadastrando nova Empresa");
 		
@@ -56,8 +57,11 @@ public class NovaEmpresaServlet extends HttpServlet {
 		Banco banco = new Banco();
 		banco.adiciona(empresa);
 		
-		PrintWriter out = response.getWriter();
-		out.println("<html><body>Empresa "+ nomeEmpresa +" cadastrada com SUCESSO!!!</body></html>");
+		//Estamos chamando o JSP
+		RequestDispatcher rd =  request.getRequestDispatcher("/novaEmpresaCriada.jsp");
+		request.setAttribute("empresa", empresa.getNome());
+		request.setAttribute("empresaCnpj", empresa.getCnpj());
+		rd.forward(request, response);
 		
 	}
 
