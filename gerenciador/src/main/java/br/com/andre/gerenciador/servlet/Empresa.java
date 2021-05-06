@@ -1,5 +1,7 @@
 package br.com.andre.gerenciador.servlet;
 
+import java.util.Date;
+
 public class Empresa {
 	
 	private Integer id;
@@ -7,6 +9,7 @@ public class Empresa {
 	private String cnpj;
 	private String telefone;
 	private String site;
+	private Date dataAbertura = new Date();
 
 	public Integer getId() {
 		return id;
@@ -40,4 +43,10 @@ public class Empresa {
 		this.site = site;
 	}
 	
+	public Date getDataAbertura() {
+		return dataAbertura;
+	}
+	public void setDataAbertura(Date dataAbertura) {
+		this.dataAbertura = dataAbertura;
+	}
 }

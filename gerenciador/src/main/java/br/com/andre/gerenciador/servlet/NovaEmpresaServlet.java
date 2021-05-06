@@ -2,6 +2,9 @@ package br.com.andre.gerenciador.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -30,6 +33,17 @@ public class NovaEmpresaServlet extends HttpServlet {
 		System.out.println("Cadastrando nova Empresa");
 		
 		String nomeEmpresa = request.getParameter("nome");
+		String paramDataEmpresa = request.getParameter("data");
+		Date dataAbertura = null;
+		try {
+	        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	        Date dataAberturDate = sdf.parse(paramDataEmpresa);
+	    } catch (ParseException e) {
+	            throw new ServletException(e);
+	    }
+
+	
+	    
 		//Meu objeto
 		Empresa empresa = new Empresa();
 		//Seus atributos
@@ -37,6 +51,7 @@ public class NovaEmpresaServlet extends HttpServlet {
 		empresa.setCnpj(nomeEmpresa);
 		empresa.setTelefone(nomeEmpresa);
 		empresa.setSite(nomeEmpresa);
+	    empresa.setDataAbertura(dataAbertura);
 		
 		//Simulando Banco de dados
 		Banco banco = new Banco();

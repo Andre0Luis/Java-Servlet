@@ -106,12 +106,14 @@
       </div>
       
       <form action="${linkServletNovaEmpresa}" method="post">
+      
         <h1>Cadastrar nova Empresa</h1>
         <div class="info">
           <input class="fname" type="text" name="nome" placeholder="Nome da Empresa">
           <input type="text" name="cnpj" placeholder="CNPJ">
           <input type="text" name="telefone" placeholder="Numero de Telefone">
-          <input type="text" name="site" placeholder="Site da Empresa">
+          <input type="text" name="data" placeholder="Data Abertura">
+          
         </div>
        
         <button type="submit" href="/">Submit</button>
