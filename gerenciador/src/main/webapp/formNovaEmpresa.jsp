@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:url value="/novaEmpresa" var="linkServletNovaEmpresa"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,7 +94,9 @@
       }
     </style>
 </head>
+
 <body>
+
 
   <div class="main-block">
       <div class="left-part">
@@ -100,7 +104,8 @@
         <i class="fas fa-at"></i>
         <i class="fas fa-mail-bulk"></i>
       </div>
-      <form action="/gerenciador/novaEmpresa" method="post">
+      
+      <form action="${linkServletNovaEmpresa}" method="post">
         <h1>Cadastrar nova Empresa</h1>
         <div class="info">
           <input class="fname" type="text" name="nome" placeholder="Nome da Empresa">
